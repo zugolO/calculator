@@ -18,7 +18,6 @@ public class Calculator {
                 aNumber = true;
             }
         }
-//        String[] operator = str.split("+-/*");
         String[] operator = str.split("\\w");
         LogicOp = operator[operator.length - 1];
         if (operanda.length < 2) {
