@@ -6,6 +6,7 @@ public class Calculator {
     static boolean aNumber;
 
     public static void main(String[] args) throws NumberException {
+        String LogicOp;
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
         String[] operanda = str.split("\\W");
@@ -17,7 +18,9 @@ public class Calculator {
                 aNumber = true;
             }
         }
+//        String[] operator = str.split("+-/*");
         String[] operator = str.split("\\w");
+        LogicOp = operator[operator.length - 1];
         if (operanda.length < 2) {
             throw new NumberException("т.к. строка не является математической операцией");
         } else if (operanda.length > 2) {
@@ -31,10 +34,10 @@ public class Calculator {
         if (rNumber && aNumber) {
             throw new NumberException("т.к. используются одновременно разные системы счисления");
         } else if (!rNumber && aNumber) {
-            int result = calc(firstNumber, secondNumber, (operator[1]));
+            int result = calc(firstNumber, secondNumber, LogicOp);
             System.out.println(result);
         } else if (rNumber && !aNumber) {
-            int result = calc(firstNumber, secondNumber, (operator[1]));
+            int result = calc(firstNumber, secondNumber, LogicOp);
             System.out.println(convertNumber(result - 1));
         }
     }
